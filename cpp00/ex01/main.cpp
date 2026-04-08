@@ -12,7 +12,7 @@ int main(void)
 	std::string phoneNumber;
 	std::string darkestSecret;
 
-	while (true)
+	while (1)
 	{
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, command);
@@ -21,8 +21,12 @@ int main(void)
 		{
 			std::cout << "Enter first name: ";
 			std::getline(std::cin, firstName);
+			// if(!std::cin)
+				// break;
 			std::cout << "Enter last name: ";
 			std::getline(std::cin, lastName);
+			// if(!std::cin)
+			// 	break;
 			std::cout << "Enter nickname: ";
 			std::getline(std::cin, nickname);
 			std::cout << "Enter phone number: ";

@@ -41,6 +41,7 @@ void PhoneBook::displayAll(void) const
 	{
 		std::cout << "Index " << i << ": ";
 		std::cout << contacts[i].getFirstName() << " ";
-		std::cout << contacts[i].getLastName() << std::endl;
+		std::cout << contacts[i].getLastName() << " ";
+		std::cout << contacts[i].getNickname() << std::endl;
 	}
 }

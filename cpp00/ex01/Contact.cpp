@@ -1,44 +1,37 @@
-#include "Contact.hpp"
+#include "PhoneBook.hpp"
 #include <iostream>
+#include <string>
 
-Contact::Contact(void)
+void PhoneBook::searchContact(void)
 {
-}
+    std::string input;
 
-Contact::~Contact(void)
-{
-}
+    if (contactCount == 0) 
+	{
+        std::cout << "Phonebook is empty!" << std::endl;
+        return;
+    }
 
-void Contact::setContact(std::string first, std::string last, std::string nick,
-						std::string phone, std::string secret)
-{
-	firstName = first;
-	lastName = last;
-	nickname = nick;
-	phoneNumber = phone;
-	darkestSecret = secret;
-}
+    std::cout << "Enter contact index: ";
+    if (!(std::getline(std::cin, input)) || input.empty())
+        return;
 
-void Contact::displayContact(void) const
-{
-	std::cout << "First Name: " << firstName << std::endl;
-	std::cout << "Last Name: " << lastName << std::endl;
-	std::cout << "Nickname: " << nickname << std::endl;
-	std::cout << "Phone Number: " << phoneNumber << std::endl;
-	std::cout << "Darkest Secret: " << darkestSecret << std::endl;
-}
+    try
+	{
+        int index = std::stoi(input);
 
-std::string Contact::getFirstName(void) const
-{
-	return (firstName);
-}
-
-std::string Contact::getLastName(void) const
-{
-	return (lastName);
-}
-
-std::string Contact::getNickname(void) const
-{
-	return (nickname);
+        if (index >= 0 && index < contactCount) {
+            contacts[index].displayContact();
+        } else {
+            std::cout << "Error: Index out of range (0-" << contactCount - 1 << ")." << std::endl;
+        }
+    } 
+    catch (const std::invalid_argument& e) 
+	{
+        std::cout << "Error: That's not a number!" << std::endl;
+    } 
+    catch (const std::out_of_range& e) 
+	{
+        std::cout << "Error: Number is way too large!" << std::endl;
+    }
 }

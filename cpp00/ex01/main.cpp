@@ -1,47 +1,40 @@
 #include "PhoneBook.hpp"
+// #include "contact.cpp"
 #include <iostream>
 #include <string>
+
+bool getInput(std::string cmd, std::string &target)
+{
+	std::cout << cmd;
+	if(!(std::getline(std::cin, target)))
+		return false;
+	if(target.empty())
+		std::cout << "Field Empty!" << std::endl;
+	return true;
+}
 
 int main(void)
 {
 	PhoneBook phonebook;
 	std::string command;
-	std::string firstName;
-	std::string lastName;
-	std::string nickname;
-	std::string phoneNumber;
-	std::string darkestSecret;
 
-	while (1)
+	while (true)
 	{
-		if(!std::cin)
+		if(!getInput("Enter command (ADD, SEARCH, EXIT): ", command))
 			break;
-		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command);
-		
-		if (command == "ADD")
-		{
-			std::cout << "Enter first name: ";
-			std::getline(std::cin, firstName);
-			if(!std::cin)
-				break;
-			std::cout << "Enter last name: ";
-			std::getline(std::cin, lastName);
-			if(!std::cin)
-				break;
-			std::cout << "Enter nickname: ";
-			std::getline(std::cin, nickname);
-			if(!std::cin)
-				break;
-			std::cout << "Enter phone number: ";
-			std::getline(std::cin, phoneNumber);
-			if(!std::cin)
-				break;
-			std::cout << "Enter darkest secret: ";
-			std::getline(std::cin, darkestSecret);
-			if(!std::cin)
-				break;
 
+		if(command == "ADD")
+		{
+			std::string firstName;
+			std::string lastName;
+			std::string nickname;
+			std::string phoneNumber;
+			std::string darkestSecret;
+
+			if(!getInput("First name: ", firstName) || !getInput("Last name: ", lastName) 
+			||!getInput("Nickname: ", nickname) ||!getInput("Phone Number: ", phoneNumber) 
+			||!getInput("Darkest Secret: ", darkestSecret))
+				break;
 			Contact newContact;
 			newContact.setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 			phonebook.addContact(newContact);
@@ -52,11 +45,7 @@ int main(void)
 			phonebook.searchContact();
 		}
 		else if (command == "EXIT")
-		{
-			break;
-		}
-		else if (std::cin.eof())
 			break;
 	}
-	return (0);
+	return 0;
 }

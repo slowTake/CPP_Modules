@@ -28,7 +28,6 @@ void PhoneBook::searchContact(void)
 	
 	std::cout << "Enter contact index: ";
 	std::cin >> index;
-	
 	if (index >= 0 && index < contactCount)
 		contacts[index].displayContact();
 	else

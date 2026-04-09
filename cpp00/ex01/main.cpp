@@ -14,6 +14,8 @@ int main(void)
 
 	while (1)
 	{
+		if(!std::cin)
+			break;
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, command);
 		
@@ -21,19 +23,25 @@ int main(void)
 		{
 			std::cout << "Enter first name: ";
 			std::getline(std::cin, firstName);
-			// if(!std::cin)
-				// break;
+			if(!std::cin)
+				break;
 			std::cout << "Enter last name: ";
 			std::getline(std::cin, lastName);
-			// if(!std::cin)
-			// 	break;
+			if(!std::cin)
+				break;
 			std::cout << "Enter nickname: ";
 			std::getline(std::cin, nickname);
+			if(!std::cin)
+				break;
 			std::cout << "Enter phone number: ";
 			std::getline(std::cin, phoneNumber);
+			if(!std::cin)
+				break;
 			std::cout << "Enter darkest secret: ";
 			std::getline(std::cin, darkestSecret);
-			
+			if(!std::cin)
+				break;
+
 			Contact newContact;
 			newContact.setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 			phonebook.addContact(newContact);
@@ -47,7 +55,8 @@ int main(void)
 		{
 			break;
 		}
+		else if (std::cin.eof())
+			break;
 	}
-	
 	return (0);
 }

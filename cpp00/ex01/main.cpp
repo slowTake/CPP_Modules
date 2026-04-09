@@ -31,6 +31,8 @@ int main(void)
 				break;
 			std::cout << "Enter nickname: ";
 			std::getline(std::cin, nickname);
+			if(nickname.empty()) //<< check for nickname empty
+				
 			if(!std::cin)
 				break;
 			std::cout << "Enter phone number: ";

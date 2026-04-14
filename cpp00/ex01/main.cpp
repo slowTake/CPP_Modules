@@ -1,89 +1,51 @@
 #include "PhoneBook.hpp"
 
-int main(void)
+bool	get_valid_input(std::string prompt, std::string &target)
+{
+	while (true)
+	{
+		std::cout << prompt;
+		if (!std::getline(std::cin, target))
+			return (false);
+		if (!target.empty())
+			return (true);
+		std::cout << "Field cannot be empty. Please try again." << std::endl;
+	}
+}
+
+int	main(void)
 {
 	PhoneBook phonebook;
-	std::string command;
-	std::string firstName;
-	std::string lastName;
-	std::string nickname;
-	std::string phoneNumber;
-	std::string darkestSecret;
+	std::string cmd, f, l, n, p, s;
 
-	while (1)
+	while (true)
 	{
-		if(!std::cin)
-			break;
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command);
-		
-		if (command == "ADD")
+		if (!std::getline(std::cin, cmd))
+			break ;
+
+		if (cmd == "ADD")
 		{
-			std::cout << "Enter first name: ";
-			std::getline(std::cin, firstName);
-			if(firstName.empty())
-			{
-				std::cout << "Field cannot be empty. start again." << std::endl;
-				continue;
-			}
-			if(!std::cin)
-				break;
-
-			std::cout << "Enter last name: ";
-			std::getline(std::cin, lastName);
-			if(lastName.empty())
-			{
-				std::cout << "Field cannot be empty. start again." << std::endl;
-				continue;
-			}
-			if(!std::cin)
-				break;
-
-			std::cout << "Enter nickname: ";
-			std::getline(std::cin, nickname);
-			if(nickname.empty())
-			{
-				std::cout << "Field cannot be empty. start again." << std::endl;
-				continue;
-			}
-			if(!std::cin)
-				break;
-
-			std::cout << "Enter phone number: ";
-			std::getline(std::cin, phoneNumber);
-			if(phoneNumber.empty())
-			{
-				std::cout << "Field cannot be empty. start again." << std::endl;
-				continue;
-			}
-			if(!std::cin)
-				break;
-
-			std::cout << "Enter darkest secret: ";
-			std::getline(std::cin, darkestSecret);
-			if(darkestSecret.empty())
-			{
-				std::cout << "Field cannot be empty. start again." << std::endl;
-				continue;
-			}			
-			if(!std::cin)
-				break;
+			if (!get_valid_input("Enter first name: ", f)
+				|| !get_valid_input("Enter last name: ", l)
+				|| !get_valid_input("Enter nickname: ", n)
+				|| !get_valid_input("Enter phone number: ", p)
+				|| !get_valid_input("Enter darkest secret: ", s))
+				break ;
 
 			Contact newContact;
-			newContact.setContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
+			newContact.setContact(f, l, n, p, s);
 			phonebook.addContact(newContact);
 		}
-		else if (command == "SEARCH")
+		else if (cmd == "SEARCH")
 		{
 			phonebook.displayAll();
 			phonebook.searchContact();
 		}
-		else if (command == "EXIT")
+		else if (cmd == "EXIT")
 		{
-			break;
+			break ;
 		}
-		else if (std::cin.eof())
-			break;
 	}
 	return (0);
 }

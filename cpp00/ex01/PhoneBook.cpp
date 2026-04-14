@@ -19,8 +19,6 @@ void PhoneBook::addContact(const Contact& contact)
 	}
 }
 
-
-
 void PhoneBook::searchContact(void)
 {
 	int	index;

@@ -23,24 +23,51 @@ int main(void)
 		{
 			std::cout << "Enter first name: ";
 			std::getline(std::cin, firstName);
+			if(firstName.empty())
+			{
+				std::cout << "Field cannot be empty. start again." << std::endl;
+				continue;
+			}
 			if(!std::cin)
 				break;
+
 			std::cout << "Enter last name: ";
 			std::getline(std::cin, lastName);
+			if(lastName.empty())
+			{
+				std::cout << "Field cannot be empty. start again." << std::endl;
+				continue;
+			}
 			if(!std::cin)
 				break;
+
 			std::cout << "Enter nickname: ";
 			std::getline(std::cin, nickname);
-			if(nickname.empty()) //<< check for nickname empty
-				
+			if(nickname.empty())
+			{
+				std::cout << "Field cannot be empty. start again." << std::endl;
+				continue;
+			}
 			if(!std::cin)
 				break;
+
 			std::cout << "Enter phone number: ";
 			std::getline(std::cin, phoneNumber);
+			if(phoneNumber.empty())
+			{
+				std::cout << "Field cannot be empty. start again." << std::endl;
+				continue;
+			}
 			if(!std::cin)
 				break;
+
 			std::cout << "Enter darkest secret: ";
 			std::getline(std::cin, darkestSecret);
+			if(darkestSecret.empty())
+			{
+				std::cout << "Field cannot be empty. start again." << std::endl;
+				continue;
+			}			
 			if(!std::cin)
 				break;
 

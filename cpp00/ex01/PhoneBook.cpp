@@ -19,6 +19,8 @@ void PhoneBook::addContact(const Contact& contact)
 	}
 }
 
+
+
 void PhoneBook::searchContact(void)
 {
 	int	index;
@@ -32,7 +34,7 @@ void PhoneBook::searchContact(void)
 	}
 	while (true)
 	{
-		std::cout << "Enter contact index (0 to " << contactCount - 1 << "): ";
+		std::cout << "Enter contact index: ";
 		if (!std::getline(std::cin, input))
 			return ;
 		try
@@ -57,11 +59,18 @@ void PhoneBook::searchContact(void)
 
 void PhoneBook::displayAll(void) const
 {
+	std::cout << "|" << std::setw(10) << "index";
+	std::cout << "|" << std::setw(10) << "First Name";
+	std::cout << "|" << std::setw(10) << "Last Name";
+	std::cout << "|" << std::setw(10) << "Nickname";
+	std::cout << "|" << std::endl;
+
 	for (int i = 0; i < contactCount; i++)
 	{
-		std::cout << "Index " << i << ": ";
-		std::cout << contacts[i].getFirstName() << " ";
-		std::cout << contacts[i].getLastName() << " ";
-		std::cout << contacts[i].getNickname() << std::endl;
+		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|" << std::setw(10) << contacts[i].getFirstName();
+		std::cout << "|" << std::setw(10) << contacts[i].getLastName();
+		std::cout << "|" << std::setw(10) << contacts[i].getNickname(); 
+		std::cout << "|" << std::endl;
 	}
 }

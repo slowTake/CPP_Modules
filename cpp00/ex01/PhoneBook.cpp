@@ -55,6 +55,13 @@ void PhoneBook::searchContact(void)
 	}
 }
 
+std::string formatColumn(std::string str)
+{
+	if(str.length() > 10)
+		return str.substr(0, 9) + ".";
+	return str;
+}
+
 void PhoneBook::displayAll(void) const
 {
 	std::cout << "|" << std::setw(10) << "index";
@@ -66,9 +73,9 @@ void PhoneBook::displayAll(void) const
 	for (int i = 0; i < contactCount; i++)
 	{
 		std::cout << "|" << std::setw(10) << i;
-		std::cout << "|" << std::setw(10) << contacts[i].getFirstName();
-		std::cout << "|" << std::setw(10) << contacts[i].getLastName();
-		std::cout << "|" << std::setw(10) << contacts[i].getNickname(); 
+		std::cout << "|" << std::setw(10) << formatColumn(contacts[i].getFirstName());
+		std::cout << "|" << std::setw(10) << formatColumn(contacts[i].getLastName());
+		std::cout << "|" << std::setw(10) << formatColumn(contacts[i].getNickname()); 
 		std::cout << "|" << std::endl;
 	}
 }

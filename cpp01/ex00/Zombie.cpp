@@ -1,12 +1,6 @@
-#include <iostream>
+#include "Zombie.hpp"
 
-class Zombie
+void Zombie::announce(void)
 {
-	private:
-		std::string name;
-
-	public:
-		Zombie(std::string name);
-		~Zombie();
-	void announce(void);
+	std::cout << this->name << ": Braiiiiiiinz..." << std::endl;
 }

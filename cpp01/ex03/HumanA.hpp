@@ -1,21 +1,19 @@
-#include "Weapon.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
+
+# include "Weapon.hpp"
 
 class HumanA
 {
-	private:
-		
-	public:
-		HumanA();
-		HumanA(std::string name);
-		~HumanA();
-		void attack()
-		{
-			std::cout << "attacks with their " << Weapon.getType() << std::endl;
-		}
+  private:
+	std::string _name;
+	Weapon &_weapon;
+
+  public:
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
+
+	void attack() const;
 };
 
-//HumanA is ref
-//HumanB is pointer
-
-//ref cannot be null
-//
+#endif

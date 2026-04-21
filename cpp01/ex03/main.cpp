@@ -1,4 +1,6 @@
 #include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
@@ -21,3 +23,9 @@ int main()
 	}
 	return 0;
 }
+
+
+// HumanA is ref
+// HumanB is pointer
+
+// ref cannot be null

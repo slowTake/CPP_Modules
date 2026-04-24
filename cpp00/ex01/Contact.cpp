@@ -9,7 +9,7 @@ Contact::~Contact(void)
 }
 
 void Contact::setContact(std::string first, std::string last, std::string nick,
-						std::string phone, std::string secret)
+	std::string phone, std::string secret)
 {
 	firstName = first;
 	lastName = last;

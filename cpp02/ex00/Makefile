@@ -1,7 +1,7 @@
 NAME		= ex00
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++11
-SRC			= main.cpp
+SRC			= main.cpp Fixed.cpp
 OBJ			= $(SRC:.cpp=.o)
 
 all: $(NAME)

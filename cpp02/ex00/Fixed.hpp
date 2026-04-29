@@ -9,10 +9,17 @@ class Fixed
 		int _value;
 
 	public:
-		Fixed();
+		// default constructor
+		Fixed(); 
+
+		// copy constructor
 		Fixed(const Fixed &copy);
-		~Fixed();
+
+		// copy assignment operator
 		Fixed &operator=(const Fixed &copy);
+		
+		//destructor
+		~Fixed();
 };
 
 #endif

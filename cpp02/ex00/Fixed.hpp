@@ -20,6 +20,9 @@ class Fixed
 		
 		//destructor
 		~Fixed();
+
+		void setRawBits(int const raw);
+		int getRawBits(void) const;
 };
 
 #endif

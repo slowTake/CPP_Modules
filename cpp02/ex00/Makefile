@@ -1,4 +1,4 @@
-NAME		= ex00
+NAME		= Raw
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++20
 SRC			= main.cpp Fixed.cpp

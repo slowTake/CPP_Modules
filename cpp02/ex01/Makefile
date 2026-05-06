@@ -1,7 +1,7 @@
-NAME		= Harl
+NAME		= Fixed_point
 CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++11
-SRC			= main.cpp Harl.cpp
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++20
+SRC			= main.cpp Fixed.cpp
 OBJ			= $(SRC:.cpp=.o)
 
 all: $(NAME)

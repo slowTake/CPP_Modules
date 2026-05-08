@@ -1,28 +1,22 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Fixed
 {
-	private:
-		int _value;
+  private:
+	int _value;
+	static const int _bits = 8;
 
-	public:
-		// default constructor
-		Fixed(); 
+  public:
+	Fixed();
+	Fixed(const Fixed &copy);
+	Fixed &operator=(const Fixed &copy);
+	~Fixed();
 
-		// copy constructor
-		Fixed(const Fixed &copy);
-
-		// copy assignment operator
-		Fixed &operator=(const Fixed &copy);
-		
-		//destructor
-		~Fixed();
-
-		void setRawBits(int const raw);
-		int getRawBits(void) const;
+	void setRawBits(int const raw);
+	int getRawBits(void) const;
 };
 
 #endif

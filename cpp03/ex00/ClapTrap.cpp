@@ -13,11 +13,15 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
-	std::cout << "Assignment operator called" << std::endl;
-	this->name = copy.name;
-	this->energy = copy.energy;
-	this->damage = copy.energy;
-	this->hp = copy.hp;
+	if(this != &copy)
+	{
+		std::cout << "Assignment operator called" << std::endl;
+		this->name = copy.name;
+		this->energy = copy.energy;
+		this->damage = copy.energy;
+		this->hp = copy.hp;
+	}
+	return *this;
 }
 
 ClapTrap::~ClapTrap()
@@ -32,14 +36,14 @@ void ClapTrap::attack(const std::string &target)
 		std::cout << "ClapTrap " << this->name << " has no energy or hp left to attack";
 		return ;
 	}
-
 	this->energy -= 1;
-	std::cout << "ClapTrap " << this->name << " attacks" << target 
-	<< ", causing" << damage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->name << " attacks " << target 
+	<< ", causing " << damage << " points of damage!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	amount = this->damage;
 	if(this->hp <= 0)
 	{
 		std::cout << "ClapTrap is already dead";	
@@ -48,7 +52,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 	if(this->hp > 0)
 	{
-		std::cout << "ClapTrap " << this->name << "took:" << this->damage << " Damage";
+		std::cout << "ClapTrap " << this->name << " took:" << this->damage << " Damage" <<std::endl;
 		this->hp -= this->hp - this->damage;
 	}
 }

@@ -8,9 +8,9 @@ class ClapTrap
 {
   protected:
 	std::string name;
-	unsigned int hp = 100;
-	unsigned int energy = 50;
-	unsigned int damage = 20;
+	unsigned int hp;
+	unsigned int energy;
+	unsigned int damage;
 
   public:
 	ClapTrap();
@@ -20,7 +20,7 @@ class ClapTrap
 	virtual ~ClapTrap();
 
 	// Member functions
-	void attack(const std::string &target);
+	virtual void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 };

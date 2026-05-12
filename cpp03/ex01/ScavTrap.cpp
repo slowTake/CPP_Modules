@@ -1,6 +1,7 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() {
+ScavTrap::ScavTrap() : ClapTrap()
+{
     this->hp = 100;
     this->energy = 50;
     this->damage = 20;

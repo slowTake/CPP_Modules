@@ -1,31 +1,33 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(void)
-{
-    // 1. Create the bots
-    ClapTrap hero("Timmy");
-    ClapTrap hostile("Eppy");
+int main() {
+    std::cout << "--- CREATING CLAPTRAP ---" << std::endl;
+    ClapTrap clap("Basic-Bot");
 
-    std::cout << "\n--- ROUND 1: Basic Combat ---" << std::endl;
-    hero.attack("Eppy");
-    hostile.takeDamage(5); // Now Eppy has 5 HP
+    std::cout << "\n--- CREATING SCAVTRAP ---" << std::endl;
+    // Notice how this will call ClapTrap constructor THEN ScavTrap constructor
+    ScavTrap scav("Gate-Guardian");
 
-    std::cout << "\n--- ROUND 2: Repairing ---" << std::endl;
-    hostile.beRepaired(3); // Now Eppy has 8 HP
+    std::cout << "\n--- TESTING STATS & ATTACK ---" << std::endl;
+    clap.attack("a fly");
+    scav.attack("a bandit"); // Should show 20 damage, not 0
 
-    std::cout << "\n--- ROUND 3: Energy Exhaustion ---" << std::endl;
-    // Eppy repairs himself 9 more times (Eppy started with 10 energy, used 1 for repair, 9 left)
-    for (int i = 0; i < 10; i++) {
-        hostile.beRepaired(1);
+    std::cout << "\n--- TESTING INHERITED FUNCTIONS ---" << std::endl;
+    // ScavTrap didn't define takeDamage, but it inherited it!
+    scav.takeDamage(30);
+    scav.beRepaired(10);
+
+    std::cout << "\n--- TESTING SPECIAL CAPACITY ---" << std::endl;
+    scav.guardGate();
+
+    std::cout << "\n--- TESTING ENERGY EXHAUSTION ---" << std::endl;
+    // ScavTrap has 50 energy, let's see it work
+    for (int i = 0; i < 50; i++) {
+        scav.attack("the wall");
     }
-    // Eppy should now fail to attack because energy is 0
-    hostile.attack("Timmy");
+    scav.attack("one last time"); // Should fail
 
-    std::cout << "\n--- ROUND 4: Lethal Damage ---" << std::endl;
-    hero.takeDamage(20); // Should set HP to 0, not underflow
-    hero.beRepaired(10); // Should fail because hero is dead
-
-    std::cout << "\n--- ROUND 5: Cleanup ---" << std::endl;
-    // Destructors will be called automatically here
+    std::cout << "\n--- DESTRUCTORS ---" << std::endl;
+    // Watch the order: Scav destructor first, then Clap destructor
     return 0;
 }

@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    // 1. Create the bots
+    // 1. Create clappies
     ClapTrap hero("Timmy");
     ClapTrap hostile("Eppy");
 

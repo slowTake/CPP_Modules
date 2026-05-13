@@ -5,7 +5,6 @@
 int main()
 {
     std::cout << "===== CONSTRUCTORS =====" << std::endl;
-    // Notice the constructor chain in the terminal!
     ClapTrap basic("CL4P-TP");
     ScavTrap guard("SC4V-TP");
     FragTrap heavy("FR4G-TP");

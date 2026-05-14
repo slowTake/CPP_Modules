@@ -1,7 +1,7 @@
-NAME		= ClapTrap
+NAME		= Polymorphism
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++20
-SRC			= main.cpp 
+SRC			= main.cpp animal.cpp
 OBJ			= $(SRC:.cpp=.o)
 
 all: $(NAME)

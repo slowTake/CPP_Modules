@@ -7,36 +7,34 @@ class animal
 {
 	protected:
 	 std::string type;
-
 	public:
 	 animal();
 	 animal(const animal &copy);
 	 animal &operator=(const animal &copy);
-	 ~animal();
+	 virtual ~animal();
+
+	 virtual void makeSound() const;
+	 std::string getType() const;
 };
 
-class Dog : animal
+class Dog : public animal // Public otherwise defaults to private
 {
-	private:
-	 
 	public:
 	 Dog();
 	 Dog(const Dog &copy);
 	 Dog &operator=(const Dog &copy);
-	 ~Dog();
+	 ~Dog() override;
 
-	 void makeSound();
+	 void makeSound() const override;
 };
 
-class Cat :animal
+class Cat : public animal
 {
-	private:
-
 	public:
 	 Cat();
 	 Cat(const Cat &copy);
 	 Cat &operator=(const Cat &copy);
-	 ~Cat();
-	 
-	 void makeSound();
+	 ~Cat() override;
+
+	 void makeSound() const override;
 };

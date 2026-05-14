@@ -1,7 +1,7 @@
-NAME		= Polymorphism
+NAME		= animal
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++20
-SRC			= main.cpp animal.cpp
+SRC			= main.cpp animal.cpp wrongAnimal.cpp 
 OBJ			= $(SRC:.cpp=.o)
 
 all: $(NAME)

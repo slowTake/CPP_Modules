@@ -13,7 +13,7 @@ Uncomment line 16 and 25 and 28
 int main()
 {
     std::cout << "--- STANDARD ANIMAL TESTS ---" << std::endl;
-    // const animal* meta = new animal(); Uncomment to test compilation
+    // const animal* meta = new animal();
     const animal* j = new Dog();
     const animal* i = new Cat();
 

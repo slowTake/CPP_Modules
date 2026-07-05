@@ -11,6 +11,7 @@ int main()
         
         // This next line should throw!
         bob.incrementGrade(); 
+
     }
     catch (const std::exception &e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;

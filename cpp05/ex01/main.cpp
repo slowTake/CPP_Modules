@@ -1,28 +1,46 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-    // Test 1: Working Bureaucrat
+    std::cout << "=== Test 1: Valid form construction ===" << std::endl;
     try {
-        Bureaucrat bob("Bob", 2);
-        std::cout << bob << std::endl;
-        bob.incrementGrade();
-        std::cout << "After increment: " << bob << std::endl;
-        
-        // This next line should throw!
-        bob.incrementGrade(); 
-    }
-    catch (const std::exception &e) {
+        Form tax("tax", 5, 10);
+        std::cout << tax << std::endl;
+    } catch (const std::exception &e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
     std::cout << "--------------------" << std::endl;
 
-    // Test 2: Instant Fail Bureaucrat
+    std::cout << "=== Test 2: Invalid form grade ===" << std::endl;
     try {
-        Bureaucrat crash("Crash", 160);
+        Form invalid("invalid", 0, 10);
+    } catch (const std::exception &e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
     }
-    catch (const std::exception &e) {
+
+    std::cout << "--------------------" << std::endl;
+
+    std::cout << "=== Test 3: Successful sign ===" << std::endl;
+    try {
+        Bureaucrat bob("Bob", 1);
+        Form tax("tax", 5, 10);
+        bob.signForm(tax);
+        std::cout << tax << std::endl;
+    } catch (const std::exception &e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    std::cout << "--------------------" << std::endl;
+
+    std::cout << "=== Test 4: Failed sign ===" << std::endl;
+    try {
+        Bureaucrat lowly("Lowly", 50);
+        Form tax("tax", 5, 10);
+        lowly.signForm(tax);
+        std::cout << tax << std::endl;
+    } catch (const std::exception &e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 

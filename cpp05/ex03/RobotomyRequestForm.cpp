@@ -7,7 +7,7 @@ RobotomyRequestForm::RobotomyRequestForm()
     : AForm("Robotomy Request", 72, 45, "none") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-    : AForm("Robotomy Request", 72, 45, target) {}
+    : AForm("Robotomy Request", 72, 45, target) {} // subject-required sign/exec grades
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
     : AForm(copy) {}
@@ -25,6 +25,7 @@ void RobotomyRequestForm::executeAction() const
 {
     std::cout << "* DRILLING NOISES *" << std::endl;
 
+    // 50% success rate per subject; srand() called in main
     if (std::rand() % 2)
         std::cout << this->getTarget() << " has been robotomized successfully"
                   << std::endl;

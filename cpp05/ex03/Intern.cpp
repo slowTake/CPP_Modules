@@ -29,6 +29,7 @@ struct FormEntry
     FormCreator create;
 };
 
+// Factory table avoids long if/else chain (subject requirement for ex03)
 static const FormEntry formTable[] = {
     {"shrubbery creation", &createShrubbery},
     {"robotomy request", &createRobotomy},
@@ -53,12 +54,13 @@ AForm *Intern::makeForm(const std::string &formName, const std::string &target)
 {
     for (std::size_t i = 0; i < formTableSize; ++i) {
         if (formName == formTable[i].name) {
-            AForm *form = formTable[i].create(target);
+            AForm *form = formTable[i].create(target); // caller owns memory; must delete
             std::cout << "Intern creates " << form->getName() << std::endl;
             return form;
         }
     }
 
+    // Unknown form name: explicit error, return NULL
     std::cout << "Error: form name \"" << formName << "\" does not exist"
               << std::endl;
     return NULL;

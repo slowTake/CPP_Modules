@@ -1,4 +1,4 @@
-#include "AForm.hpp"
+#include "AForm.hpp"   // complete type needed to delete AForm* safely
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
 
@@ -13,13 +13,14 @@ int main()
     Intern someRandomIntern;
     AForm *rrf;
 
+    // Test 1: Subject example — Intern creates form, bureaucrat signs/executes, then delete
     std::cout << "=== Test 1: Subject example ===" << std::endl;
     rrf = someRandomIntern.makeForm("robotomy request", "Bender");
     if (rrf) {
         Bureaucrat mechanic("Mechanic", 40);
         mechanic.signForm(*rrf);
         mechanic.executeForm(*rrf);
-        delete rrf;
+        delete rrf; // makeForm returns new; caller must free
     }
 
     std::cout << "--------------------" << std::endl;
@@ -46,6 +47,7 @@ int main()
 
     std::cout << "--------------------" << std::endl;
 
+    // Test 4: Unknown form name prints error; makeForm returns NULL
     std::cout << "=== Test 4: Unknown form ===" << std::endl;
     AForm *unknown = someRandomIntern.makeForm("coffee request", "Douglas");
     if (unknown)

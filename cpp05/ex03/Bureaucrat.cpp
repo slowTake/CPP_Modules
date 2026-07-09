@@ -42,6 +42,7 @@ void Bureaucrat::decrementGrade()
 
 void Bureaucrat::signForm(AForm &form)
 {
+    // Catch exceptions and print subject-format success/failure messages
     try {
         form.beSigned(*this);
         std::cout << this->_name << " signed " << form.getName() << std::endl;
@@ -53,6 +54,7 @@ void Bureaucrat::signForm(AForm &form)
 
 void Bureaucrat::executeForm(AForm const &form) const
 {
+    // Delegates to AForm::execute(); catches FormNotSignedException and GradeTooLowException
     try {
         form.execute(*this);
         std::cout << this->_name << " executed " << form.getName() << std::endl;

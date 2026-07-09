@@ -9,8 +9,9 @@
 
 int main()
 {
-    std::srand(static_cast<unsigned int>(std::time(NULL)));
+    std::srand(static_cast<unsigned int>(std::time(NULL))); // seed for RobotomyRequestForm 50% chance
 
+    // Test 1: Sign + execute shrubbery; creates home_shrubbery file
     std::cout << "=== Test 1: Shrubbery creation ===" << std::endl;
     try {
         Bureaucrat gardener("Gardener", 130);
@@ -48,6 +49,7 @@ int main()
 
     std::cout << "--------------------" << std::endl;
 
+    // Test 4: executeForm catches FormNotSignedException
     std::cout << "=== Test 4: Execute unsigned form ===" << std::endl;
     try {
         Bureaucrat bob("Bob", 1);
@@ -59,6 +61,7 @@ int main()
 
     std::cout << "--------------------" << std::endl;
 
+    // Test 5: can sign but exec grade too low (exec 137, bureaucrat grade 140)
     std::cout << "=== Test 5: Execute with grade too low ===" << std::endl;
     try {
         Bureaucrat intern("Intern", 140);

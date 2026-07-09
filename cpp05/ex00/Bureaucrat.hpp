@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 
+// Bureaucrat grade scale: 1 = highest rank, 150 = lowest rank
 class Bureaucrat
 {
 private:
@@ -26,7 +27,7 @@ public:
     void incrementGrade();
     void decrementGrade();
 
-    // Custom Exception Classes
+    // Nested exceptions inherit std::exception so catch (std::exception &) works
     class GradeTooHighException : public std::exception
     {
     public:

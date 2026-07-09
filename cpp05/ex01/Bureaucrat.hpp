@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 
+// Forward declaration avoids circular include (Form.hpp includes Bureaucrat.hpp)
 class Form;
 
 class Bureaucrat

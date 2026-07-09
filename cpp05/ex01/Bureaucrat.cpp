@@ -39,6 +39,7 @@ void Bureaucrat::decrementGrade() {
 }
 
 void Bureaucrat::signForm(Form &form) {
+    // try/catch here so failure prints a message instead of terminating main
     try {
         form.beSigned(*this);
         std::cout << this->_name << " signed " << form.getName() << std::endl;

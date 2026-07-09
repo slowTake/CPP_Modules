@@ -42,6 +42,7 @@ std::string AForm::getTarget() const { return this->_target; }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
+    // Lower grade number = higher authority
     if (bureaucrat.getGrade() > this->_gradeToSign)
         throw AForm::GradeTooLowException();
     this->_isSigned = true;
@@ -49,6 +50,7 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
 
 void AForm::execute(Bureaucrat const &executor) const
 {
+    // Centralized validation before calling derived executeAction() (Template Method)
     if (!this->_isSigned)
         throw AForm::FormNotSignedException();
     if (executor.getGrade() > this->_gradeToExecute)

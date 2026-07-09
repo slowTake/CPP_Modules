@@ -2,7 +2,7 @@
 
 int main()
 {
-    // Test 1: Working Bureaucrat
+    // Test 1: Valid bureaucrat + incrementGrade throws at grade 1
     try {
         Bureaucrat bob("Bob", 2);
         std::cout << bob << std::endl;
@@ -19,7 +19,7 @@ int main()
 
     std::cout << "--------------------" << std::endl;
 
-    // Test 2: Instant Fail Bureaucrat
+    // Test 2: Constructor throws GradeTooLowException for grade > 150
     try {
         Bureaucrat crash("Crash", 160);
     }

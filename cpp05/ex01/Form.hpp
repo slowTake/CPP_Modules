@@ -6,9 +6,9 @@ class Form
 {
 private:
     const std::string _name;
-    bool _isSigned;
+    bool _isSigned;              // false at construction; only mutable signing state
     const int _gradeToSign;
-    const int _gradeToExecute;
+    const int _gradeToExecute;   // stored for ex02; unused when signing in ex01
 
 public:
     // OCF

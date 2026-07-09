@@ -2,6 +2,7 @@
 
 static void validateGrade(int grade)
 {
+    // Same 1-150 grade rules as Bureaucrat
     if (grade < 1)
         throw Form::GradeTooHighException();
     if (grade > 150)
@@ -27,7 +28,7 @@ Form::Form(const Form &copy)
 Form &Form::operator=(const Form &copy)
 {
     if (this != &copy)
-        this->_isSigned = copy._isSigned;
+        this->_isSigned = copy._isSigned; // const _name/grades cannot be reassigned
     return *this;
 }
 
@@ -40,6 +41,7 @@ int Form::getGradeToExecute() const { return this->_gradeToExecute; }
 
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
+    // Lower grade number = higher authority; bureaucrat must be <= required grade
     if (bureaucrat.getGrade() > this->_gradeToSign)
         throw Form::GradeTooLowException();
     this->_isSigned = true;

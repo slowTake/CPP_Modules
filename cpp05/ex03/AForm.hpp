@@ -2,6 +2,7 @@
 
 #include "Bureaucrat.hpp"
 
+// Abstract base class: cannot instantiate directly (pure virtual executeAction)
 class AForm
 {
 private:
@@ -11,6 +12,7 @@ private:
     const int _gradeToExecute;
     const std::string _target;
 
+    // Pure virtual: each concrete form implements its own action
     virtual void executeAction() const = 0;
 
 protected:
@@ -21,7 +23,7 @@ protected:
 public:
     AForm(const AForm &copy);
     AForm &operator=(const AForm &copy);
-    virtual ~AForm();
+    virtual ~AForm(); // virtual destructor required for polymorphic delete
 
     std::string getName() const;
     bool getIsSigned() const;
@@ -44,7 +46,7 @@ public:
         virtual const char *what() const throw();
     };
 
-    class FormNotSignedException : public std::exception
+    class FormNotSignedException : public std::exception // thrown when executing unsigned form
     {
     public:
         virtual const char *what() const throw();

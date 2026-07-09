@@ -7,7 +7,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("Shrubbery Creation", 145, 137, "none") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-    : AForm("Shrubbery Creation", 145, 137, target) {}
+    : AForm("Shrubbery Creation", 145, 137, target) {} // subject-required sign/exec grades
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
     : AForm(copy) {}
@@ -23,6 +23,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::executeAction() const
 {
+    // Only runs after AForm::execute() confirms signed + grade OK
+    // Writes runtime output file <target>_shrubbery (not a build artifact)
     std::string filename = this->getTarget() + "_shrubbery";
     std::ofstream file(filename.c_str());
 

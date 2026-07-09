@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+// Forward declaration: Bureaucrat.hpp must not include AForm.hpp (avoids circular include)
 class AForm;
 
 class Bureaucrat
@@ -26,7 +27,7 @@ public:
     void decrementGrade();
 
     void signForm(AForm &form);
-    void executeForm(AForm const &form) const;
+    void executeForm(AForm const &form) const; // const: executing a form does not change the bureaucrat
 
     class GradeTooHighException : public std::exception
     {
